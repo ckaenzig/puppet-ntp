@@ -1,6 +1,6 @@
 class ntp::server {
-  case $operatingsystem {
-    Debian,Ubunru: { include ntp::server::debian }
-    default: { fail "Unkown operatingsystem $operatingsystem" }
+  case $::osfamily {
+    'Debian': { include ::ntp::server::debian }
+    default: { fail "Unkown OS family ${::osfamily}" }
   }
 }
